@@ -1,0 +1,150 @@
+{
+  "source_root": "2026-10-30-nemotron-small-gpu",
+  "generated_date": "2026-10-30",
+  "files": [
+    {
+      "source": "scripts/bootstrap.py",
+      "destination": "scripts/bootstrap.py",
+      "kind": "script-seed",
+      "mutable_after_adaptation": true,
+      "source_bytes": 10700,
+      "source_sha256": "e123e0ac8f686529d43b6b0b87a2f4c86d1a5c30b65172962f7f8af7f93ac2c0"
+    },
+    {
+      "source": "scripts/prepare_cpp.py",
+      "destination": "scripts/prepare_cpp.py",
+      "kind": "script-seed",
+      "mutable_after_adaptation": true,
+      "source_bytes": 9822,
+      "source_sha256": "9f48c68e66f00e278a4c3c662dca78186b02dd0d21cd80279ec4342facc27aff"
+    },
+    {
+      "source": "scripts/convert_q4_profile.py",
+      "destination": "scripts/convert_q4_profile.py",
+      "kind": "script-seed",
+      "mutable_after_adaptation": true,
+      "source_bytes": 685,
+      "source_sha256": "9cbdb3d6c57b47afb3dc146fc3d4b76931435b569d41d3d9c4274f567981ccc4"
+    },
+    {
+      "source": "scripts/run_small_gpu.py",
+      "destination": "scripts/run_small_gpu.py",
+      "kind": "script-seed",
+      "mutable_after_adaptation": true,
+      "source_bytes": 6606,
+      "source_sha256": "b19f0a41c42975c4e45aaaf4da9f6030793f715a9441247de55ee4d4c0e34368"
+    },
+    {
+      "source": "artifacts/audio/fleurs-ja-01.wav",
+      "destination": "audio/fleurs-ja-01.wav",
+      "kind": "sample-audio",
+      "mutable_after_adaptation": false,
+      "source_bytes": 710458,
+      "source_sha256": "9627b8f5d46806e1a433b443d692fdfb24f26a35c1a47eba26291475fc643d7b"
+    },
+    {
+      "source": "artifacts/audio/fleurs-ja-02.wav",
+      "destination": "audio/fleurs-ja-02.wav",
+      "kind": "sample-audio",
+      "mutable_after_adaptation": false,
+      "source_bytes": 510778,
+      "source_sha256": "88391f365cdecc51a56ef5f9322c441c0107ab8d0c6f7a3a09f2334ffe8c56ff"
+    },
+    {
+      "source": "artifacts/small-gpu-results.json",
+      "destination": "evidence/2026-10-30/small-gpu-results.json",
+      "kind": "evidence",
+      "mutable_after_adaptation": false,
+      "source_bytes": 7659,
+      "source_sha256": "8f04a23917904acf63330e3c85a8a12eeb73f80e2ae3e1ac8a070025f74abe34"
+    },
+    {
+      "source": "executed.ipynb",
+      "destination": "evidence/2026-10-30/executed-history.ipynb",
+      "kind": "evidence",
+      "mutable_after_adaptation": false,
+      "source_bytes": 256451,
+      "source_sha256": "eb0c184e2face30f6124248cc5e19a1843fb49301b1d52b9fa168ca461022941"
+    },
+    {
+      "source": "artifacts/verification.json",
+      "destination": "evidence/2026-10-30/verification.json",
+      "kind": "evidence",
+      "mutable_after_adaptation": false,
+      "source_bytes": 455,
+      "source_sha256": "2b564ff15d7ef617a13da6ec8b7c37186582864683833bb4c06a080d1b696871"
+    },
+    {
+      "source": "artifacts/n_gpu_layers.patch",
+      "destination": "evidence/2026-10-30/n_gpu_layers.patch",
+      "kind": "upstream-patch-evidence",
+      "mutable_after_adaptation": false,
+      "source_bytes": 1196,
+      "source_sha256": "e98a800757868a3a2d4fadb4c298fa93161c458d1662836cebc4b6a7e3bb58a2"
+    },
+    {
+      "source": "artifacts/iq4-1607-layers8.txt",
+      "destination": "evidence/2026-10-30/runs/1607-layers8.txt",
+      "kind": "run-output",
+      "mutable_after_adaptation": false,
+      "source_bytes": 84,
+      "source_sha256": "d08e321eead312970905ca6ba0d9b64ea0a5f2630667e2d3c6fbc613870234b9"
+    },
+    {
+      "source": "artifacts/iq4-1607-layers8.log",
+      "destination": "evidence/2026-10-30/runs/1607-layers8.log",
+      "kind": "run-output",
+      "mutable_after_adaptation": false,
+      "source_bytes": 1655,
+      "source_sha256": "c64a96f7a18a45b7bef445085cb684e18bd19ca5f034d1d786cdbed3eeefddeb"
+    },
+    {
+      "source": "artifacts/iq4-1519-layers8.txt",
+      "destination": "evidence/2026-10-30/runs/1519-layers8.txt",
+      "kind": "run-output",
+      "mutable_after_adaptation": false,
+      "source_bytes": 148,
+      "source_sha256": "4aa316a9f3604995a51acd0cd9dca67d9ac3eca60209cb1242c500cdb2425f9f"
+    },
+    {
+      "source": "artifacts/iq4-1519-layers8.log",
+      "destination": "evidence/2026-10-30/runs/1519-layers8.log",
+      "kind": "run-output",
+      "mutable_after_adaptation": false,
+      "source_bytes": 1655,
+      "source_sha256": "c64a96f7a18a45b7bef445085cb684e18bd19ca5f034d1d786cdbed3eeefddeb"
+    },
+    {
+      "source": "artifacts/iq4-1607-layers0.txt",
+      "destination": "evidence/2026-10-30/runs/1607-layers0.txt",
+      "kind": "run-output",
+      "mutable_after_adaptation": false,
+      "source_bytes": 84,
+      "source_sha256": "d08e321eead312970905ca6ba0d9b64ea0a5f2630667e2d3c6fbc613870234b9"
+    },
+    {
+      "source": "artifacts/iq4-1607-layers0.log",
+      "destination": "evidence/2026-10-30/runs/1607-layers0.log",
+      "kind": "run-output",
+      "mutable_after_adaptation": false,
+      "source_bytes": 1657,
+      "source_sha256": "f778bf0d329f071d4d70fdd2499f15e987140390f19fbb99187d675ce9248db2"
+    },
+    {
+      "source": "artifacts/iq4-1519-layers0.txt",
+      "destination": "evidence/2026-10-30/runs/1519-layers0.txt",
+      "kind": "run-output",
+      "mutable_after_adaptation": false,
+      "source_bytes": 148,
+      "source_sha256": "4aa316a9f3604995a51acd0cd9dca67d9ac3eca60209cb1242c500cdb2425f9f"
+    },
+    {
+      "source": "artifacts/iq4-1519-layers0.log",
+      "destination": "evidence/2026-10-30/runs/1519-layers0.log",
+      "kind": "run-output",
+      "mutable_after_adaptation": false,
+      "source_bytes": 1657,
+      "source_sha256": "f778bf0d329f071d4d70fdd2499f15e987140390f19fbb99187d675ce9248db2"
+    }
+  ]
+}

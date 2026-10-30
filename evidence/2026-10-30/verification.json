@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "scope": "Four native transcription results, original input hashes, actual Q4_0 expert tensor types, GPU use and available-memory budget. Not a test on a physical 4GB GPU or a general accuracy/speed benchmark.",
+  "run_count": 4,
+  "sample_ids": [
+    "1519",
+    "1607"
+  ],
+  "expert_tensor_types": {
+    "Q4_0": 48
+  },
+  "native_gpu_peak_mib": 5116,
+  "budget4_native_gpu_peak_mib": 2174,
+  "budget4_rss_peak_kib": 19685352
+}

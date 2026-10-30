@@ -1,0 +1,22 @@
+diff --git a/src/speechlm/salm_engine.cpp b/src/speechlm/salm_engine.cpp
+index 70679df..25f7c2a 100644
+--- a/src/speechlm/salm_engine.cpp
++++ b/src/speechlm/salm_engine.cpp
+@@ -422,7 +422,16 @@ struct SalmEngine::Impl {
+         std::call_once(abort_once, [] { g_previous_abort = ggml_set_abort_callback(abort_cb); });
+         llama_backend_init();
+         llama_model_params mp = llama_model_default_params();
+-        mp.n_gpu_layers = cfg.gpu >= 0 ? 999 : 0;
++        const char* gpu_layers_env = std::getenv("NEMOTRON_GPU_LAYERS");
++        if (gpu_layers_env) {
++            char* parsed_end = nullptr;
++            const long gpu_layers = std::strtol(gpu_layers_env, &parsed_end, 10);
++            if (parsed_end == gpu_layers_env || *parsed_end != '\0' || gpu_layers < 0 || gpu_layers > 999)
++                throw std::invalid_argument("NEMOTRON_GPU_LAYERS must be an integer from 0 to 999");
++            mp.n_gpu_layers = static_cast<int>(gpu_layers);
++        } else {
++            mp.n_gpu_layers = cfg.gpu >= 0 ? 999 : 0;
++        }
+         mp.load_mtp = cfg.mtp_draft > 0 && cfg.dflash_path.empty();
+         if (cfg.gpu >= 0) {
+             mp.load_mode = LLAMA_LOAD_MODE_NONE;

@@ -1,0 +1,3 @@
+* text=auto eol=lf
+audio/*.wav binary
+evidence/** -text whitespace=cr-at-eol

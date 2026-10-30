@@ -1,0 +1,21 @@
+[nemo-speech] transcribe session started
+transcribe: model=/content/nemotron-gguf/decoder-Q4_0.gguf inputs=1 concurrency=1 device=0
+model has unused tensor blk.52.nextn.enorm.weight (size = 10752 bytes) -- ignoring
+model has unused tensor blk.52.nextn.hnorm.weight (size = 10752 bytes) -- ignoring
+model has unused tensor blk.52.nextn.eh_proj.weight (size = 28901376 bytes) -- ignoring
+model has unused tensor blk.52.nextn.shared_head_norm.weight (size = 10752 bytes) -- ignoring
+model has unused tensor blk.52.attn_norm.weight (size = 10752 bytes) -- ignoring
+model has unused tensor blk.52.attn_q.weight (size = 11698176 bytes) -- ignoring
+model has unused tensor blk.52.attn_k.weight (size = 731136 bytes) -- ignoring
+model has unused tensor blk.52.attn_v.weight (size = 731136 bytes) -- ignoring
+model has unused tensor blk.52.attn_output.weight (size = 11698176 bytes) -- ignoring
+model has unused tensor blk.52.post_attention_norm.weight (size = 10752 bytes) -- ignoring
+model has unused tensor blk.52.ffn_gate_inp.weight (size = 688128 bytes) -- ignoring
+model has unused tensor blk.52.exp_probs_b.bias (size = 512 bytes) -- ignoring
+model has unused tensor blk.52.ffn_down_exps.weight (size = 359202816 bytes) -- ignoring
+model has unused tensor blk.52.ffn_up_exps.weight (size = 359202816 bytes) -- ignoring
+model has unused tensor blk.52.ffn_down_shexp.weight (size = 10601472 bytes) -- ignoring
+model has unused tensor blk.52.ffn_up_shexp.weight (size = 10601472 bytes) -- ignoring
+........................................................
+[salm] path=upstream llama.cpp mtp_draft=0 slots=1 n_batch=256
+[nemo-speech] transcribe session finished
