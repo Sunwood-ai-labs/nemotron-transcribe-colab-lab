@@ -17,13 +17,14 @@ CELLS = [
         "markdown",
         """# Nemotron TranscribeをT4で試す
 
-このノートブックは、NeMo-Speech.cppの実験的な小GPU経路で日本語音声を文字起こしします。最初に公開コードとモデルの固定リビジョンを取得し、T4上でビルド・変換してから音声を処理します。
+このノートブックはNeMo-Speech.cppを使い、CPUとGPUを併用して日本語音声を文字起こしします。最初に公開コードとモデルの固定リビジョンを取得し、T4上でビルド・変換してから音声を処理します。
 
 ## 0. 実行前に確認する
 
-- Colabのランタイムを **T4 GPU / High RAM** にします。必要なRAMは約50 GiB以上、空きディスクは180 GB以上です。
+- Colabのランタイムを **T4 GPU / High RAM** にします。検証環境のRAMは約51 GiBです。事前チェックではRAM50 GiB以上、空きディスク180 GB以上を要求します。
 - 変換中はBF16モデル約67 GB、変換用データ約66 GB、量子化出力約22 GBを使います。処理後もモデル重みは `/content` に残り、ZIPには入りません。
-- 既定の `GPU_LAYERS = 0` はdecoderをCPUで実行し、音声encoderはGPUを使います。decoderは実験的なQ4_0 experts / Q8_0 dense構成です。GPUには約4 GiB以上の空きが必要です。4 GiB GPUでの動作を保証する設定ではありません。
+- 既定の `GPU_LAYERS = 0` は言語モデルのdecoderをCPUで実行し、音声encoderはGPUを使います。decoderは実験的なQ4_0 experts / Q8_0 dense構成です。事前チェックでは空きVRAM4 GiB以上を要求します。物理的な4 GB GPUは未検証です。
+- 既定の0層を使ってください。8層は前回約5 GiBのGPUメモリを使ったため、空きVRAMは6 GiB以上を目安にしてください。自動の事前確認は4 GiBの共通条件だけを調べます。
 - 初回のセットアップはモデル取得、ビルド、変換を行うため時間がかかります。各段階のログは `/content/nemotron-transcribe` に保存します。""",
     ),
     (
@@ -78,7 +79,7 @@ print(f"取得したコードSHA: {SOURCE_COMMIT}")""",
         "markdown",
         """## 2. ランタイムを確認する
 
-この確認はPyTorchをimportせず、GPU・RAM・空き容量・`nvcc`・既存PyTorchの版を読みます。条件を満たさない場合は、数十GBのモデルを取得する前に停止します。""",
+この確認はPyTorchをimportせず、GPU・RAM・空き容量・`nvcc`・既存PyTorchのバージョンを読みます。条件を満たさない場合は、数十GBのモデルを取得する前に停止します。""",
     ),
     (
         "code",
@@ -118,7 +119,7 @@ for sample in lab.SAMPLES:
         "markdown",
         """### 前回保存済みのT4・Q4_0 / CPU併用の出力
 
-元データは [保存済み結果JSON](evidence/2026-10-30/small-gpu-results.json) です。T4上でdecoderのGPU layer数を0にした保存済み出力だけを表示します。4 GiBの空きVRAMを残すよう同じT4上でメモリを確保した実験で、4 GiB GPUでの実行ではありません。2音声の参考例で、今回の結果や一般的な日本語精度を示すものではありません。""",
+元データは [保存済み結果JSON](https://github.com/Sunwood-ai-labs/nemotron-transcribe-colab-lab/blob/main/evidence/2026-10-30/small-gpu-results.json) です。T4上でdecoderのGPU layer数を0にした保存済み出力だけを表示します。4 GiBの空きVRAMを残すよう同じT4上でメモリを確保した実験で、4 GiB GPUでの実行ではありません。2音声の参考例で、今回の結果や一般的な日本語精度を示すものではありません。""",
     ),
     (
         "code",
@@ -149,7 +150,7 @@ for run in RUNS:
         "markdown",
         """## 6. 自分のWAVを追加する（任意）
 
-アップロードは初期設定で無効です。使う場合は設定セルの `USE_UPLOAD = True` に変更して、このセルを実行してください。入力はモノラルWAV（PCMまたはfloat）です。""",
+アップロードは初期設定で無効です。使う場合は設定セルの `USE_UPLOAD = True` に変更して、このセルを実行してください。入力はモノラルWAVで、PCM16またはfloat32、サンプルレート8〜96 kHzにしてください。長時間音声は未検証です。""",
     ),
     (
         "code",
@@ -168,7 +169,7 @@ else:
         "markdown",
         """## 7. 結果とログを書き出す
 
-ZIPには実行レポートと必要なログだけを含めます。モデル重みと入力音声は含みません。Colab CLIや自動実行ではダウンロードUIを開かず、設定セルの `DOWNLOAD_REPORT = True` を選んだ場合だけブラウザーのダウンロードを呼び出します。""",
+ZIPには実行レポートと必要なログを含めます。認識文、音声ファイル名、実行設定も保存されます。モデル重みと入力音声ファイルは含みません。Colab CLIや自動実行ではダウンロードUIを開かず、設定セルの `DOWNLOAD_REPORT = True` を選んだ場合だけブラウザーのダウンロードを呼び出します。""",
     ),
     (
         "code",

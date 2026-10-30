@@ -317,6 +317,30 @@ def check_public_payload(scaffold: bool) -> CheckResult:
     return CheckResult("Public payload", tuple(errors))
 
 
+def check_notebook_links(scaffold: bool) -> CheckResult:
+    errors: list[str] = []
+    paths = [NOTEBOOK, *sorted((ROOT / "notebooks" / "results").glob("*.ipynb"))]
+    for path in paths:
+        if not path.is_file():
+            continue
+        notebook = json.loads(path.read_text(encoding="utf-8"))
+        for cell in notebook["cells"]:
+            if cell["cell_type"] != "markdown":
+                continue
+            source = cell["source"]
+            text = "".join(source) if isinstance(source, list) else source
+            targets = [match.group(1) for match in MARKDOWN_LINK.finditer(text)]
+            targets += [match.group(1) for match in HTML_REFERENCE.finditer(text)]
+            for value in targets:
+                target = value.strip().split("#", 1)[0].split("?", 1)[0]
+                if not target or urlsplit(target).scheme or target.startswith("//"):
+                    continue
+                candidate = (path.parent / unquote(target)).resolve()
+                if not candidate.is_relative_to(ROOT) or not candidate.exists():
+                    errors.append(f"Broken notebook link: {path.relative_to(ROOT)} -> {value}.")
+    return CheckResult("Notebook links", tuple(errors))
+
+
 def check_history_notebook(scaffold: bool) -> CheckResult:
     if not HISTORY.is_file():
         return CheckResult("Historical CLI capture", ("The captured CLI notebook is missing.",))
@@ -343,6 +367,7 @@ def _run_checks(scaffold: bool) -> int:
         check_source_map,
         check_history_notebook,
         check_local_links,
+        check_notebook_links,
         check_public_payload,
     )
     failed = False

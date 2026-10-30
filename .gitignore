@@ -16,3 +16,5 @@ models/
 *.pt
 *.pth
 *.zip
+.yomiyasu*/
+.qa/
