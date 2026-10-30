@@ -1,0 +1,49 @@
+{
+  "status": "complete",
+  "source_commit": "33a38c8faaed84eb8a4c781f35327d2c21a9e2f2",
+  "notebook_source_revision": "d16e3035b9fe5f278cfee8291fe717666e611f37",
+  "notebook_source_sha256": "1378f1c6c21de274e8b45cab1950c8d5339275461316964efd4295ad19087947",
+  "code_cells": 9,
+  "embedded_audio_outputs": [
+    {
+      "channels": 1,
+      "sample_rate": 16000,
+      "sample_width": 2,
+      "frames": 177600
+    },
+    {
+      "channels": 1,
+      "sample_rate": 16000,
+      "sample_width": 2,
+      "frames": 127680
+    }
+  ],
+  "actual_outputs": {
+    "source_notebook": {
+      "path": "evidence/notebook-validation-2026-10-30/raw-source.ipynb",
+      "sha256": "1378f1c6c21de274e8b45cab1950c8d5339275461316964efd4295ad19087947"
+    },
+    "raw_notebook": {
+      "path": "evidence/notebook-validation-2026-10-30/raw-executed.ipynb",
+      "sha256": "bf385473fac5c0e65b488478ab9f230b545adbc8d98d8e027884ac7d68b8ecb1"
+    },
+    "notebook": {
+      "path": "notebooks/results/T4_2026-10-30.ipynb",
+      "sha256": "7aba39994d8fedc5f2656857499c9d3546e3442c398108f74564e696c8128978"
+    },
+    "execution_log": {
+      "path": "evidence/notebook-validation-2026-10-30/execution.log",
+      "sha256": "a7153d1ed0a7b5e44a9f94d7dc08a0358c1f9dd54b80e5c4714fb58cea1fe42d"
+    }
+  },
+  "presentation_changes": [
+    "Explanatory Markdown corrected after execution.",
+    "Preparation stdout wrapped in collapsible HTML; raw streams preserved separately."
+  ],
+  "limits": [
+    "Optional upload and browser download controls were skipped.",
+    "Browser UI and listening acceptance were not checked; local browser use is disabled.",
+    "Fresh notebook run used normal T4 free VRAM; the 4 GiB-free reservation test is separate historical evidence.",
+    "Elapsed values include model loading and monitoring waits, not pure decoder computation."
+  ]
+}

@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "status": "complete",
+  "started_at_utc": "2026-10-30T09:29:12.268924+00:00",
+  "finished_at_utc": "2026-10-30T09:29:51.805739+00:00",
+  "model": {
+    "repo_id": "nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B",
+    "revision": "c17667641642c4265ff2b7037dd101b7d4567634"
+  },
+  "transformers_source": {
+    "repository": "https://github.com/huggingface/transformers.git",
+    "revision": "e82b00dd04d71b2e2801ecf3029eea3858868091"
+  },
+  "paths": {
+    "output_dir": "/content/nemotron-transcribe",
+    "hf_cache_dir": "/content/hf-cache",
+    "weights_are_inside_output_dir": false
+  },
+  "packages_before": {
+    "torch": "2.11.0+cu130",
+    "transformers": "5.20.2",
+    "accelerate": "1.15.0",
+    "datasets": "4.8.5",
+    "soundfile": "0.14.0",
+    "huggingface-hub": "1.33.0",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.23.3",
+    "pyarrow": "23.0.1"
+  },
+  "environment_before": {
+    "captured_at_utc": "2026-10-30T09:29:14.012212+00:00",
+    "python": {
+      "version": "3.13.16",
+      "implementation": "CPython",
+      "executable": "/usr/bin/python3"
+    },
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "torch": {
+      "version": "2.11.0+cu130",
+      "cuda_version": "13.0",
+      "cuda_available": true,
+      "device_count": 1,
+      "devices": [
+        {
+          "index": 0,
+          "name": "Tesla T4",
+          "capability": [
+            7,
+            5
+          ],
+          "total_memory_bytes": 15637086208,
+          "free_memory_bytes": 15527116800
+        }
+      ]
+    },
+    "ram": {
+      "total_bytes": 54750392320,
+      "available_bytes": 52828266496
+    },
+    "disk": {
+      "path": "/content",
+      "total_bytes": 253055008768,
+      "used_bytes": 45678510080,
+      "free_bytes": 207359721472
+    },
+    "nvidia_smi": {
+      "available": true,
+      "returncode": 0,
+      "stdout": "Tesla T4, 15360 MiB, 14808 MiB, 580.82.07\n",
+      "stderr": ""
+    }
+  },
+  "install": {
+    "command": [
+      "/usr/bin/python3",
+      "-m",
+      "pip",
+      "install",
+      "--disable-pip-version-check",
+      "--upgrade-strategy",
+      "only-if-needed",
+      "--constraint",
+      "/content/nemotron-transcribe/torch-constraint.txt",
+      "git+https://github.com/huggingface/transformers.git@e82b00dd04d71b2e2801ecf3029eea3858868091",
+      "accelerate>=1.0",
+      "datasets>=4.4",
+      "soundfile>=0.13",
+      "bitsandbytes"
+    ],
+    "returncode": 0,
+    "stdout_tail": "s (from huggingface-hub<3.0,>=1.31.0->transformers==5.22.0.dev0) (2025.12.0)\nRequirement already satisfied: hf-xet<2.0.0,>=1.6.0 in /usr/local/lib/python3.13/dist-packages (from huggingface-hub<3.0,>=1.31.0->transformers==5.22.0.dev0) (1.7.0)\nRequirement already satisfied: httpx<1,>=0.23.0 in /usr/local/lib/python3.13/dist-packages (from huggingface-hub<3.0,>=1.31.0->transformers==5.22.0.dev0) (0.28.1)\nRequirement already satisfied: typing-extensions>=4.1.0 in /usr/local/lib/python3.13/dist-packages (from huggingface-hub<3.0,>=1.31.0->transformers==5.22.0.dev0) (4.16.0)\nRequirement already satisfied: anyio in /usr/local/lib/python3.13/dist-packages (from httpx<1,>=0.23.0->huggingface-hub<3.0,>=1.31.0->transformers==5.22.0.dev0) (4.15.1)\nRequirement already satisfied: certifi in /usr/local/lib/python3.13/dist-packages (from httpx<1,>=0.23.0->huggingface-hub<3.0,>=1.31.0->transformers==5.22.0.dev0) (2026.10.23)\nRequirement already satisfied: httpcore==1.* in /usr/local/lib/python3.13/dist-packages (from httpx<1,>=0.23.0->huggingface-hub<3.0,>=1.31.0->transformers==5.22.0.dev0) (1.0.9)\nRequirement already satisfied: idna in /usr/local/lib/python3.13/dist-packages (from httpx<1,>=0.23.0->huggingface-hub<3.0,>=1.31.0->transformers==5.22.0.dev0) (3.20)\nRequirement already satisfied: h11>=0.16 in /usr/local/lib/python3.13/dist-packages (from httpcore==1.*->httpx<1,>=0.23.0->huggingface-hub<3.0,>=1.31.0->transformers==5.22.0.dev0) (0.16.0)\nRequirement already satisfied: psutil in /usr/local/lib/python3.13/dist-packages (from accelerate>=1.0) (5.9.5)\nRequirement already satisfied: torch>=2.0.0 in /usr/local/lib/python3.13/dist-packages (from accelerate>=1.0) (2.11.0+cu130)\nRequirement already satisfied: pyarrow>=21.0.0 in /usr/local/lib/python3.13/dist-packages (from datasets>=4.4) (23.0.1)\nRequirement already satisfied: dill<0.4.2,>=0.3.0 in /usr/local/lib/python3.13/dist-packages (from datasets>=4.4) (0.4.1)\nRequirement already satisfied: pandas in /usr/local/lib/python3.13/dist-packages (from datasets>=4.4) (2.2.3)\nRequirement already satisfied: requests>=2.32.2 in /usr/local/lib/python3.13/dist-packages (from datasets>=4.4) (2.32.4)\nRequirement already satisfied: xxhash in /usr/local/lib/python3.13/dist-packages (from datasets>=4.4) (4.0.2)\nRequirement already satisfied: multiprocess<0.70.20 in /usr/local/lib/python3.13/dist-packages (from datasets>=4.4) (0.70.19)\nRequirement already satisfied: aiohttp!=4.0.0a0,!=4.0.0a1 in /usr/local/lib/python3.13/dist-packages (from fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=4.4) (3.14.5)\nRequirement already satisfied: cffi>=1.0 in /usr/local/lib/python3.13/dist-packages (from soundfile>=0.13) (2.1.1)\nRequirement already satisfied: setuptools<82 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate>=1.0) (80.10.2)\nRequirement already satisfied: sympy>=1.13.3 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate>=1.0) (1.14.0)\nRequirement already satisfied: networkx>=2.5.1 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate>=1.0) (3.7)\nRequirement already satisfied: jinja2 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate>=1.0) (3.1.6)\nRequirement already satisfied: cuda-toolkit==13.0.2 in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == \"Linux\"->torch>=2.0.0->accelerate>=1.0) (13.0.2)\nRequirement already satisfied: cuda-bindings<14,>=13.0.3 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate>=1.0) (13.0.3)\nRequirement already satisfied: nvidia-cudnn-cu13==9.19.0.56 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate>=1.0) (9.19.0.56)\nRequirement already satisfied: nvidia-cusparselt-cu13==0.8.0 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate>=1.0) (0.8.0)\nRequirement already satisfied: nvidia-nccl-cu13==2.28.9 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate>=1.0) (2.28.9)\nRequirement already satisfied: nvidia-nvshmem-cu13==3.4.5 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate>=1.0) (3.4.5)\nRequirement already satisfied: triton==3.6.0 in /usr/local/lib/python3.13/dist-packages (from torch>=2.0.0->accelerate>=1.0) (3.6.0)\nRequirement already satisfied: nvidia-cublas==13.1.0.3.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == \"Linux\"->torch>=2.0.0->accelerate>=1.0) (13.1.0.3)\nRequirement already satisfied: nvidia-cuda-runtime==13.0.96.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == \"Linux\"->torch>=2.0.0->accelerate>=1.0) (13.0.96)\nRequirement already satisfied: nvidia-cufft==12.0.0.61.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == \"Linux\"->torch>=2.0.0->accelerate>=1.0) (12.0.0.61)\nRequirement already satisfied: nvidia-cufile==1.15.1.6.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == \"Linux\"->torch>=2.0.0->accelerate>=1.0) (1.15.1.6)\nRequirement already satisfied: nvidia-cuda-cupti==13.0.85.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == \"Linux\"->torch>=2.0.0->accelerate>=1.0) (13.0.85)\nRequirement already satisfied: nvidia-curand==10.4.0.35.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == \"Linux\"->torch>=2.0.0->accelerate>=1.0) (10.4.0.35)\nRequirement already satisfied: nvidia-cusolver==12.0.4.66.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == \"Linux\"->torch>=2.0.0->accelerate>=1.0) (12.0.4.66)\nRequirement already satisfied: nvidia-cusparse==12.6.3.3.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == \"Linux\"->torch>=2.0.0->accelerate>=1.0) (12.6.3.3)\nRequirement already satisfied: nvidia-nvjitlink==13.0.88.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == \"Linux\"->torch>=2.0.0->accelerate>=1.0) (13.0.88)\nRequirement already satisfied: nvidia-cuda-nvrtc==13.0.88.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == \"Linux\"->torch>=2.0.0->accelerate>=1.0) (13.0.88)\nRequirement already satisfied: nvidia-nvtx==13.0.85.* in /usr/local/lib/python3.13/dist-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.2; platform_system == \"Linux\"->torch>=2.0.0->accelerate>=1.0) (13.0.85)\nRequirement already satisfied: cuda-pathfinder~=1.1 in /usr/local/lib/python3.13/dist-packages (from cuda-bindings<14,>=13.0.3->torch>=2.0.0->accelerate>=1.0) (1.8.4)\nRequirement already satisfied: aiohappyeyeballs>=2.5.0 in /usr/local/lib/python3.13/dist-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=4.4) (2.7.1)\nRequirement already satisfied: aiosignal>=1.4.0 in /usr/local/lib/python3.13/dist-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=4.4) (1.4.0)\nRequirement already satisfied: attrs>=17.3.0 in /usr/local/lib/python3.13/dist-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=4.4) (26.1.0)\nRequirement already satisfied: frozenlist>=1.1.1 in /usr/local/lib/python3.13/dist-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=4.4) (1.8.0)\nRequirement already satisfied: multidict<8.0,>=4.5 in /usr/local/lib/python3.13/dist-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=4.4) (7.2.0)\nRequirement already satisfied: propcache>=0.2.0 in /usr/local/lib/python3.13/dist-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=4.4) (0.5.4)\nRequirement already satisfied: yarl<2.0,>=1.25.1 in /usr/local/lib/python3.13/dist-packages (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.2.0,>=2023.1.0->datasets>=4.4) (1.25.1)\nRequirement already satisfied: pycparser in /usr/local/lib/python3.13/dist-packages (from cffi>=1.0->soundfile>=0.13) (3.12)\nRequirement already satisfied: charset_normalizer<4,>=2 in /usr/local/lib/python3.13/dist-packages (from requests>=2.32.2->datasets>=4.4) (3.4.9)\nRequirement already satisfied: urllib3<3,>=1.21.1 in /usr/local/lib/python3.13/dist-packages (from requests>=2.32.2->datasets>=4.4) (2.5.0)\nRequirement already satisfied: mpmath<1.4,>=1.1.0 in /usr/local/lib/python3.13/dist-packages (from sympy>=1.13.3->torch>=2.0.0->accelerate>=1.0) (1.3.0)\nRequirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.13/dist-packages (from jinja2->torch>=2.0.0->accelerate>=1.0) (3.0.4)\nRequirement already satisfied: python-dateutil>=2.8.2 in /usr/local/lib/python3.13/dist-packages (from pandas->datasets>=4.4) (2.9.0.post0)\nRequirement already satisfied: pytz>=2020.1 in /usr/local/lib/python3.13/dist-packages (from pandas->datasets>=4.4) (2025.2)\nRequirement already satisfied: tzdata>=2022.7 in /usr/local/lib/python3.13/dist-packages (from pandas->datasets>=4.4) (2026.5)\nRequirement already satisfied: six>=1.5 in /usr/local/lib/python3.13/dist-packages (from python-dateutil>=2.8.2->pandas->datasets>=4.4) (1.17.0)\nRequirement already satisfied: shellingham>=1.3.0 in /usr/local/lib/python3.13/dist-packages (from typer->transformers==5.22.0.dev0) (1.5.4)\nRequirement already satisfied: rich>=13.8.0 in /usr/local/lib/python3.13/dist-packages (from typer->transformers==5.22.0.dev0) (13.9.4)\nRequirement already satisfied: annotated-doc>=0.0.2 in /usr/local/lib/python3.13/dist-packages (from typer->transformers==5.22.0.dev0) (0.0.5)\nRequirement already satisfied: markdown-it-py>=2.2.0 in /usr/local/lib/python3.13/dist-packages (from rich>=13.8.0->typer->transformers==5.22.0.dev0) (4.2.0)\nRequirement already satisfied: pygments<3.0.0,>=2.13.0 in /usr/local/lib/python3.13/dist-packages (from rich>=13.8.0->typer->transformers==5.22.0.dev0) (2.21.0)\nRequirement already satisfied: mdurl~=0.1 in /usr/local/lib/python3.13/dist-packages (from markdown-it-py>=2.2.0->rich>=13.8.0->typer->transformers==5.22.0.dev0) (0.1.2)\nDownloading bitsandbytes-0.50.2-py3-none-manylinux_2_24_x86_64.whl (43.1 MB)\n   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 43.1/43.1 MB 129.4 MB/s  0:00:00\nBuilding wheels for collected packages: transformers\n  Building wheel for transformers (pyproject.toml): started\n  Building wheel for transformers (pyproject.toml): finished with status 'done'\n  Created wheel for transformers: filename=transformers-5.22.0.dev0-py3-none-any.whl size=14376170 sha256=e596fe63d10d0b81ef2fe53d9c51e53ee39aebcc72718e8eb67f81b006055032\n  Stored in directory: /root/.cache/pip/wheels/be/fa/a8/7ee87f59c797505cf413edbb41f20533f0c776cbc17e49c900\nSuccessfully built transformers\nInstalling collected packages: transformers, bitsandbytes\n  Attempting uninstall: transformers\n    Found existing installation: transformers 5.20.2\n    Uninstalling transformers-5.20.2:\n      Successfully uninstalled transformers-5.20.2\n\nSuccessfully installed bitsandbytes-0.50.2 transformers-5.22.0.dev0\n",
+    "stderr_tail": "  Running command git clone --filter=blob:none --quiet https://github.com/huggingface/transformers.git /tmp/pip-req-build-d5lw3sdm\n  Running command git rev-parse -q --verify 'e82b00dd04d71b2e2801ecf3029eea3858868091^{commit}'\n  e82b00dd04d71b2e2801ecf3029eea3858868091\n  Running command git checkout -q e82b00dd04d71b2e2801ecf3029eea3858868091\n"
+  },
+  "packages_after": {
+    "torch": "2.11.0+cu130",
+    "transformers": "5.22.0.dev0",
+    "accelerate": "1.15.0",
+    "datasets": "4.8.5",
+    "soundfile": "0.14.0",
+    "huggingface-hub": "1.33.0",
+    "safetensors": "0.8.0",
+    "tokenizers": "0.23.3",
+    "pyarrow": "23.0.1"
+  },
+  "environment_after": {
+    "captured_at_utc": "2026-10-30T09:29:51.805539+00:00",
+    "python": {
+      "version": "3.13.16",
+      "implementation": "CPython",
+      "executable": "/usr/bin/python3"
+    },
+    "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+    "torch": {
+      "version": "2.11.0+cu130",
+      "cuda_version": "13.0",
+      "cuda_available": true,
+      "device_count": 1,
+      "devices": [
+        {
+          "index": 0,
+          "name": "Tesla T4",
+          "capability": [
+            7,
+            5
+          ],
+          "total_memory_bytes": 15637086208,
+          "free_memory_bytes": 15527116800
+        }
+      ]
+    },
+    "ram": {
+      "total_bytes": 54750392320,
+      "available_bytes": 52774195200
+    },
+    "disk": {
+      "path": "/content",
+      "total_bytes": 253055008768,
+      "used_bytes": 46006333440,
+      "free_bytes": 207031898112
+    },
+    "nvidia_smi": {
+      "available": true,
+      "returncode": 0,
+      "stdout": "Tesla T4, 15360 MiB, 14808 MiB, 580.82.07\n",
+      "stderr": ""
+    }
+  },
+  "stages": [
+    {
+      "name": "collect_runtime_before",
+      "status": "complete",
+      "finished_at_utc": "2026-10-30T09:29:14.013922+00:00"
+    },
+    {
+      "name": "install_dependencies",
+      "status": "complete",
+      "started_at_utc": "2026-10-30T09:29:14.018443+00:00",
+      "finished_at_utc": "2026-10-30T09:29:51.805731+00:00"
+    }
+  ],
+  "error": null
+}

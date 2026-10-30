@@ -1,0 +1,319 @@
+
+[colab] A new version of Colab CLI is available: 0.7.5 (current: 0.7.2)
+[colab] Run 'colab update' to update.
+[colab] To silence this check, set "enable_update_check": false in ~/.config/colab-cli/settings.json
+
+[colab] Parsing notebook '/mnt/c/Prj/2026-10-30-nemotron-small-gpu/public-notebook-source.ipynb'...
+[colab] Executing cell 1/9 - 実行設定...
+取得元: https://github.com/Sunwood-ai-labs/nemotron-transcribe-colab-lab.git
+コード指定: 33a38c8faaed84eb8a4c781f35327d2c21a9e2f2
+decoder GPU layers: 0
+[colab] Executing cell 2/9 - nemotron-03...
+取得したコードSHA: 33a38c8faaed84eb8a4c781f35327d2c21a9e2f2
+[colab] Executing cell 3/9 - nemotron-05...
+{'gpu': 'Tesla T4',
+ 'gpu_total_vram_gib': 15.0,
+ 'gpu_free_vram_gib': 14.56,
+ 'ram_total_gib': 50.99,
+ 'ram_available_gib': 49.6,
+ 'disk_free_gb': 207.36,
+ 'torch': '2.11.0+cu130',
+ 'torchaudio': '2.11.0+cu130',
+ 'nvcc': '/usr/local/cuda/bin/nvcc'}
+[colab] Executing cell 4/9 - nemotron-07...
+[bootstrap] 開始。ログ: /content/nemotron-transcribe/notebook-logs/bootstrap.log
+[bootstrap] [bootstrap] Installing the pinned Transformers source and audio/data dependencies; torch is constrained to its existing version.
+[bootstrap] [bootstrap] Bootstrap complete. Runtime report: /content/nemotron-transcribe/runtime.json
+[bootstrap] 完了。
+[model-download] 開始。ログ: /content/nemotron-transcribe/notebook-logs/model-download.log
+[model-download] 0% 進行
+[model-download] 30% 進行
+[model-download] 60% 進行
+[model-download] 80% 進行
+[model-download] 90% 進行
+[model-download] 実行中 1分。直近: Fetching 22 files:  91%|█████████ | 20/22 [00:01<00:00,  7.40it/s]
+[model-download] 実行中 2分。直近: Fetching 22 files:  91%|█████████ | 20/22 [00:01<00:00,  7.40it/s]
+[model-download] 実行中 3分。直近: Fetching 22 files:  91%|█████████ | 20/22 [00:01<00:00,  7.40it/s]
+[model-download] 100% 進行
+[model-download] 完了。
+[prepare-cpp] 開始。ログ: /content/nemotron-transcribe/notebook-logs/prepare-cpp.log
+[prepare-cpp] [prepare_cpp] start clone: git clone --depth 1 https://github.com/NVIDIA/NeMo-Speech.cpp.git /content/nemo-speech
+[prepare-cpp] [prepare_cpp] start fetch_revision: git -C /content/nemo-speech fetch --depth 1 origin d8a1abf2ea9d11e8f98ad0e10cc2c12ef1cb3a14
+[prepare-cpp] [prepare_cpp] start checkout_revision: git -C /content/nemo-speech checkout --detach d8a1abf2ea9d11e8f98ad0e10cc2c12ef1cb3a14
+[prepare-cpp] [prepare_cpp] start submodule: git -C /content/nemo-speech submodule update --init --depth 1 llama.cpp
+[prepare-cpp] [prepare_cpp] start system_dependencies: apt-get install -y build-essential cmake ninja-build git pkg-config libsentencepiece-dev
+[prepare-cpp] The following additional packages will be installed:
+[prepare-cpp] The following NEW packages will be installed:
+[prepare-cpp] 0 upgraded, 4 newly installed, 0 to remove and 33 not upgraded.
+[prepare-cpp] 0% 進行
+[prepare-cpp] 10% 進行
+[prepare-cpp] 20% 進行
+[prepare-cpp] 30% 進行
+[prepare-cpp] 40% 進行
+[prepare-cpp] 50% 進行
+[prepare-cpp] 60% 進行
+[prepare-cpp] 70% 進行
+[prepare-cpp] 80% 進行
+[prepare-cpp] 90% 進行
+[prepare-cpp] 100% 進行
+[prepare-cpp] (Reading database ... 127324 files and directories currently installed.)
+[prepare-cpp] [prepare_cpp] start converter_dependencies: /usr/bin/python3 -m pip install --disable-pip-version-check --upgrade-strategy only-if-needed --constraint /content/nemotron-transcribe/
+[prepare-cpp] Installing collected packages: gguf
+[prepare-cpp] Successfully installed gguf-0.19.0
+[prepare-cpp] [prepare_cpp] start configure: scripts/configure.sh cuda-asr -DGGML_CUDA=ON -DCMAKE_CUDA_ARCHITECTURES=75 -DNEMO_SPEECH_GGML_PATCHED=OFF -DNEMO_SPEECH_BUILD_ASR=ON -DNEMO_SPEECH_BU
+[prepare-cpp] -- Found CUDAToolkit: /usr/local/cuda/targets/x86_64-linux/include;/usr/local/cuda/targets/x86_64-linux/include/cccl (found version "13.0.88")
+[prepare-cpp] -- Warning: ccache not found - consider installing it for faster compilation or disable this warning with GGML_CCACHE=OFF
+[prepare-cpp] -- CUDA Toolkit found
+[prepare-cpp] -- The CUDA compiler identification is NVIDIA 13.0.88 with host compiler GNU 13.3.0
+[prepare-cpp] -- Detecting CUDA compiler ABI info
+[prepare-cpp] -- Detecting CUDA compiler ABI info - done
+[prepare-cpp] -- Check for working CUDA compiler: /usr/local/cuda/bin/nvcc - skipped
+[prepare-cpp] -- Detecting CUDA compile features
+[prepare-cpp] -- Detecting CUDA compile features - done
+[prepare-cpp] -- Using CMAKE_CUDA_ARCHITECTURES=75 CMAKE_CUDA_ARCHITECTURES_NATIVE=75-real
+[prepare-cpp] -- CUDA host compiler is GNU 13.3.0
+[prepare-cpp] -- Including CUDA backend
+[prepare-cpp] -- Build files have been written to: /content/nemo-speech/build/cuda-asr
+[prepare-cpp] [prepare_cpp] start build: cmake --build --preset cuda-asr --parallel 8
+[prepare-cpp] [27/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/acc.cu.o
+[prepare-cpp] [28/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/add-id.cu.o
+[prepare-cpp] [31/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/arange.cu.o
+[prepare-cpp] [32/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/allreduce.cu.o
+[prepare-cpp] [33/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/argmax.cu.o
+[prepare-cpp] [34/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/clamp.cu.o
+[prepare-cpp] [35/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/col2im-1d.cu.o
+[prepare-cpp] [39/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/conv-transpose-1d.cu.o
+[prepare-cpp] 実行中 1分。直近: [39/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/conv-transpose-1d.cu.o
+[prepare-cpp] [40/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/conv2d-dw.cu.o
+[prepare-cpp] [41/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/concat.cu.o
+[prepare-cpp] [42/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/conv2d-transpose.cu.o
+[prepare-cpp] [43/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/count-equal.cu.o
+[prepare-cpp] [44/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/conv2d.cu.o
+[prepare-cpp] [45/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/cross-entropy-loss.cu.o
+[prepare-cpp] [46/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/convert.cu.o
+[prepare-cpp] [47/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/diag.cu.o
+[prepare-cpp] [48/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/cpy.cu.o
+[prepare-cpp] [49/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/diagmask.cu.o
+[prepare-cpp] [50/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/dsv4-hc.cu.o
+[prepare-cpp] [51/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/fattn-tile.cu.o
+[prepare-cpp] [52/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/fill.cu.o
+[prepare-cpp] [53/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/fwht.cu.o
+[prepare-cpp] [54/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/cumsum.cu.o
+[prepare-cpp] [55/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/gated_delta_net.cu.o
+[prepare-cpp] [56/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/gla.cu.o
+[prepare-cpp] [57/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/im2col.cu.o
+[prepare-cpp] [58/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/mmf.cu.o
+[prepare-cpp] [59/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/ggml-cuda.cu.o
+[prepare-cpp] [60/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/binbcast.cu.o
+[prepare-cpp] [61/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/getrows.cu.o
+[prepare-cpp] [62/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/lightning-indexer.cu.o
+[prepare-cpp] [63/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/mmid.cu.o
+[prepare-cpp] [64/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/moe-weighted-reduction.cu.o
+[prepare-cpp] [65/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/mean.cu.o
+[prepare-cpp] [66/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/argsort.cu.o
+[prepare-cpp] [67/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/mmq.cu.o
+[prepare-cpp] [68/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/opt-step-adamw.cu.o
+[prepare-cpp] [69/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/norm.cu.o
+[prepare-cpp] [70/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/opt-step-sgd.cu.o
+[prepare-cpp] [71/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/out-prod.cu.o
+[prepare-cpp] 実行中 2分。直近: [71/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/out-prod.cu.o
+[prepare-cpp] [72/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/pad.cu.o
+[prepare-cpp] [73/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/fattn.cu.o
+[prepare-cpp] [74/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/pad_reflect_1d.cu.o
+[prepare-cpp] [75/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/pool1d.cu.o
+[prepare-cpp] [76/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/pool2d.cu.o
+[prepare-cpp] [77/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/roll.cu.o
+[prepare-cpp] [78/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/quantize.cu.o
+[prepare-cpp] [79/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/scale.cu.o
+[prepare-cpp] [80/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/set.cu.o
+[prepare-cpp] [81/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/set-rows.cu.o
+[prepare-cpp] [82/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/snake.cu.o
+[prepare-cpp] [83/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/rope.cu.o
+[prepare-cpp] [84/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/softcap.cu.o
+[prepare-cpp] [85/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/softmax.cu.o
+[prepare-cpp] [86/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/sumrows.cu.o
+[prepare-cpp] [87/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/solve_tri.cu.o
+[prepare-cpp] [88/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/ssm-conv.cu.o
+[prepare-cpp] [89/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/tri.cu.o
+[prepare-cpp] [90/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/tsembd.cu.o
+[prepare-cpp] [91/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/topk-moe.cu.o
+[prepare-cpp] [92/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/sum.cu.o
+[prepare-cpp] [93/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/ssm-scan.cu.o
+[prepare-cpp] [94/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/upscale.cu.o
+[prepare-cpp] [95/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/top-k.cu.o
+[prepare-cpp] [96/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/unary.cu.o
+[prepare-cpp] [97/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/wkv.cu.o
+[prepare-cpp] [98/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq320-dv256.cu.o
+[prepare-cpp] 実行中 3分。直近: [98/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq320-
+[prepare-cpp] [99/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/mmvf.cu.o
+[prepare-cpp] [100/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq192-dv128.cu.o
+[prepare-cpp] [101/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq40-dv40.cu.o
+[prepare-cpp] [102/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq112-dv112.cu.o
+[prepare-cpp] [103/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/mmvq.cu.o
+[prepare-cpp] [104/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq64-dv64.cu.o
+[prepare-cpp] [105/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq128-dv128.cu.o
+[prepare-cpp] [106/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq576-dv512.cu.o
+[prepare-cpp] [107/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq80-dv80.cu.o
+[prepare-cpp] 実行中 4分。直近: [107/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq80-
+[prepare-cpp] [108/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq72-dv72.cu.o
+[prepare-cpp] [109/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_1-ncols2_32.cu.o
+[prepare-cpp] [110/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq512-dv512.cu.o
+[prepare-cpp] [111/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq96-dv96.cu.o
+[prepare-cpp] [112/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_2-ncols2_32.cu.o
+[prepare-cpp] [113/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_16-ncols2_4.cu.o
+[prepare-cpp] [114/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_1-ncols2_16.cu.o
+[prepare-cpp] [115/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_2-ncols2_16.cu.o
+[prepare-cpp] [116/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-tile-instance-dkq256-dv256.cu.o
+[prepare-cpp] [117/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_4-ncols2_16.cu.o
+[prepare-cpp] [118/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_32-ncols2_2.cu.o
+[prepare-cpp] [119/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_16-ncols2_1.cu.o
+[prepare-cpp] 実行中 5分。直近: [119/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-nco
+[prepare-cpp] [120/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_16-ncols2_2.cu.o
+[prepare-cpp] [121/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_1-ncols2_8.cu.o
+[prepare-cpp] [122/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_64-ncols2_1.cu.o
+[prepare-cpp] [123/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_2-ncols2_4.cu.o
+[prepare-cpp] [124/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_2-ncols2_8.cu.o
+[prepare-cpp] [125/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_32-ncols2_1.cu.o
+[prepare-cpp] [126/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_4-ncols2_2.cu.o
+[prepare-cpp] [127/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_8-ncols2_8.cu.o
+[prepare-cpp] [128/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_4-ncols2_4.cu.o
+[prepare-cpp] 実行中 6分。直近: [128/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-nco
+[prepare-cpp] [129/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_4-ncols2_8.cu.o
+[prepare-cpp] [130/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_8-ncols2_2.cu.o
+[prepare-cpp] [131/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_8-ncols2_1.cu.o
+[prepare-cpp] [132/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-iq1_s.cu.o
+[prepare-cpp] [133/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-mma-f16-instance-ncols1_8-ncols2_4.cu.o
+[prepare-cpp] [134/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-iq2_s.cu.o
+[prepare-cpp] 実行中 7分。直近: [134/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-iq2_s.cu.o
+[prepare-cpp] [135/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-iq2_xs.cu.o
+[prepare-cpp] [136/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-iq2_xxs.cu.o
+[prepare-cpp] [137/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-iq3_s.cu.o
+[prepare-cpp] [138/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-iq4_nl.cu.o
+[prepare-cpp] [139/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-iq3_xxs.cu.o
+[prepare-cpp] [140/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-iq4_xs.cu.o
+[prepare-cpp] [141/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-mxfp4.cu.o
+[prepare-cpp] 実行中 8分。直近: [141/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-mxfp4.cu.o
+[prepare-cpp] [142/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-q1_0.cu.o
+[prepare-cpp] [143/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-q2_0.cu.o
+[prepare-cpp] [144/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-nvfp4.cu.o
+[prepare-cpp] [145/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-q4_0.cu.o
+[prepare-cpp] [146/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-q3_k.cu.o
+[prepare-cpp] [147/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-q2_k.cu.o
+[prepare-cpp] [148/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-q4_1.cu.o
+[prepare-cpp] 実行中 9分。直近: [148/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-q4_1.cu.o
+[prepare-cpp] [149/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-q4_k.cu.o
+[prepare-cpp] [150/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-q5_0.cu.o
+[prepare-cpp] [151/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_1.cu.o
+[prepare-cpp] [152/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-q5_1.cu.o
+[prepare-cpp] [153/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_10.cu.o
+[prepare-cpp] [154/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-q5_k.cu.o
+[prepare-cpp] [155/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_11.cu.o
+[prepare-cpp] [156/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_12.cu.o
+[prepare-cpp] [157/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_13.cu.o
+[prepare-cpp] [158/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_14.cu.o
+[prepare-cpp] [159/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-q8_0.cu.o
+[prepare-cpp] [160/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmq-instance-q6_k.cu.o
+[prepare-cpp] [161/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_15.cu.o
+[prepare-cpp] [162/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_16.cu.o
+[prepare-cpp] [163/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_2.cu.o
+[prepare-cpp] 実行中 10分。直近: [163/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_2.cu.o
+[prepare-cpp] [164/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_3.cu.o
+[prepare-cpp] [165/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_4.cu.o
+[prepare-cpp] [166/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_5.cu.o
+[prepare-cpp] [167/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_6.cu.o
+[prepare-cpp] [169/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_7.cu.o
+[prepare-cpp] [170/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_8.cu.o
+[prepare-cpp] [171/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-vec-instance-f16-f16.cu.o
+[prepare-cpp] [173/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/mmf-instance-ncols_9.cu.o
+[prepare-cpp] [186/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-vec-instance-bf16-bf16.cu.o
+[prepare-cpp] [194/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-vec-instance-q4_0-q4_0.cu.o
+[prepare-cpp] [197/351] Building CUDA object ggml/src/ggml-cuda/CMakeFiles/ggml-cuda.dir/template-instances/fattn-vec-instance-q8_0-q8_0.cu.o
+[prepare-cpp] [201/351] Linking CUDA shared library bin/libggml-cuda.so.0.25.1
+[prepare-cpp] [202/351] Creating library symlink bin/libggml-cuda.so.0 bin/libggml-cuda.so
+[prepare-cpp] 実行中 11分。直近: [218/351] Building CXX object llama.cpp/src/CMakeFiles/llama.dir/llama-quant.cpp.o
+[prepare-cpp] 実行中 12分。直近: [314/351] Building CXX object src/asr/CMakeFiles/nemo_speech_asr.dir/pnc/pnc_runner.cpp.o
+[prepare-cpp] [prepare_cpp] start convert_q4_0: /usr/bin/python3 /content/nemotron-transcribe/convert_q4_profile.py /content/hf-cache/models--nvidia--NVIDIA-Nemotron-3.5-Transcribe-30B-A4B/snaps
+[prepare-cpp] -- Warning: ccache not found - consider installing it for faster compilation or disable this warning with GGML_CCACHE=OFF
+[prepare-cpp] make sure Git is installed and the project is a Git repository.
+[prepare-cpp] 実行中 13分。直近: [55/138] Building CXX object src/CMakeFiles/llama.dir/llama-memory.cpp.o
+[prepare-cpp] 実行中 14分。直近: [124/138] Building CXX object common/CMakeFiles/llama-common.dir/jinja/parser.cpp.o
+[prepare-cpp] {{- "<|im_start|>system\n" + system_message }}
+[prepare-cpp] {{- "<|im_start|>system\n" }}
+[prepare-cpp] {{- '<|im_start|>assistant\n' }}
+[prepare-cpp] {{- '<|im_start|>assistant\n' ~ (content | default('', true) | string | trim) ~ '<|im_end|>\n' }}
+[prepare-cpp] {{- '<|im_start|>assistant\n' ~ c ~ '<|im_end|>\n' }}
+[prepare-cpp] {{- '<|im_start|>assistant\n<|im_end|>\n' }}
+[prepare-cpp] {{- '<|im_start|>' + message.role + '\n' }}
+[prepare-cpp] {%- if content.startswith("<|audio|>\n") %}
+[prepare-cpp] {%- if ns.text.startswith("<|audio|>\n") %}
+[prepare-cpp] {{- '<|im_start|>user\n' }}
+[prepare-cpp] {{- '<|im_start|>' + message.role + '\n' + message.content + '<|im_end|>\n' }}
+[prepare-cpp] {{- '<|im_start|>assistant\n<think>\n' }}
+[prepare-cpp] {{- '<|im_start|>assistant\n<think></think>' }}
+[prepare-cpp] 実行中 16分。直近: Writing:   4%|▍         | 2.76G/65.8G [00:24<09:35, 110Mbyte/s]
+[prepare-cpp] 実行中 17分。直近: Writing:  14%|█▍        | 9.48G/65.8G [01:27<08:46, 107Mbyte/s]
+[prepare-cpp] 実行中 18分。直近: Writing:  25%|██▍       | 16.2G/65.8G [02:29<07:29, 110Mbyte/s]
+[prepare-cpp] 実行中 19分。直近: Writing:  35%|███▍      | 23.0G/65.8G [03:35<06:42, 106Mbyte/s]
+[prepare-cpp] 実行中 20分。直近: Writing:  45%|████▍     | 29.6G/65.8G [04:37<05:42, 106Mbyte/s]
+[prepare-cpp] 実行中 21分。直近: Writing:  55%|█████▌    | 36.3G/65.8G [05:46<04:46, 103Mbyte/s]
+[prepare-cpp] 実行中 22分。直近: Writing:  65%|██████▌   | 43.0G/65.8G [06:50<03:29, 109Mbyte/s]
+[prepare-cpp] 実行中 23分。直近: Writing:  76%|███████▌  | 49.8G/65.8G [07:54<02:31, 105Mbyte/s]
+[prepare-cpp] 実行中 24分。直近: Writing:  86%|████████▌ | 56.5G/65.8G [08:56<01:24, 110Mbyte/s]
+[prepare-cpp] 実行中 25分。直近: Writing:  96%|█████████▌| 63.2G/65.8G [09:59<00:23, 112Mbyte/s]
+[prepare-cpp] llama_model_loader: - kv  34:                  nemo_speech.checkpoint_id str              = 0b5820fad1103208f65895b586bd65d2
+[prepare-cpp] 実行中 26分。直近: [  68/ 417] blk.8.ffn_down_exps.weight           - [  1856,   2688,    128,      1], type =   bf16, converting to q4_0 .
+[prepare-cpp] 実行中 27分。直近: [ 177/ 417] blk.22.ffn_up_exps.weight            - [  2688,   1856,    128,      1], type =   bf16, converting to q4_0 .
+[prepare-cpp] 実行中 28分。直近: [ 283/ 417] blk.36.ffn_up_exps.weight            - [  2688,   1856,    128,      1], type =   bf16, converting to q4_0 .
+[prepare-cpp] 実行中 29分。直近: [ 384/ 417] blk.49.ffn_up_exps.weight            - [  2688,   1856,    128,      1], type =   bf16, converting to q4_0 .
+[prepare-cpp] [convert] SALM checkpoint: 852 perception tensors
+[prepare-cpp] [prepare_cpp] complete: /content/nemotron-gguf/decoder-Q4_0.gguf
+[prepare-cpp] 完了。
+モデルの準備が完了しました。推論はまだ実行していません。
+{'status': 'complete',
+ 'model_id': 'nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B',
+ 'model_revision': 'c17667641642c4265ff2b7037dd101b7d4567634',
+ 'decoder': '/content/nemotron-gguf/decoder-Q4_0.gguf',
+ 'encoder_files': 
+['/content/nemotron-gguf/c17667641642c4265ff2b7037dd101b7d4567634-Encoder-F16.gg
+uf'],
+ 'logs': ['/content/nemotron-transcribe/notebook-logs/prepare-cpp.log',
+  '/content/nemotron-transcribe/notebook-logs/bootstrap.log',
+  '/content/nemotron-transcribe/notebook-logs/model-download.log']}
+[colab] Executing cell 5/9 - nemotron-09...
+ID 1519 / 参照文: 多くの場合、海外のギャップイヤーコースに入学することで、帰国後に実際に大学に進学しやすくなります。
+Your browser does not support the audio element.                                
+ID 1607 / 参照文: 興味をそそられる村を30分ほど散策するのは価値があります。
+Your browser does not support the audio element.                                
+[colab] Executing cell 6/9 - nemotron-11...
+ID 1607 / T4保存済み出力: 興味をそそられる村を30分ほど散策するのは価値があります。
+ID 1519 / T4保存済み出力: 多くの場合、海外のギャップイヤーコースに入学することで、企画後に実際に大学に進学しやすくなります。
+[colab] Executing cell 7/9 - nemotron-13...
+音声 fleurs-ja-01.wav を文字起こしします。decoder GPU layers=0。
+推論中です。出力ログは保存しています。
+推論中です。出力ログは保存しています。
+推論中です。出力ログは保存しています。
+推論中です。出力ログは保存しています。
+推論中です。出力ログは保存しています。
+推論中です。出力ログは保存しています。
+音声 fleurs-ja-02.wav を文字起こしします。decoder GPU layers=0。
+推論中です。出力ログは保存しています。
+推論中です。出力ログは保存しています。
+推論中です。出力ログは保存しています。
+推論中です。出力ログは保存しています。
+推論中です。出力ログは保存しています。
+ID fleurs-ja-01.wav / decoder GPU layers=0
+多くの場合、海外のギャップイヤーコースに入学することで、企画後に実際に大学に進学しやすくなります。
+経過時間: 105.0秒 / JSON: /content/nemotron-transcribe/transcripts/20261030T100318Z-fleurs-ja-01-layers0.json
+
+ID fleurs-ja-02.wav / decoder GPU layers=0
+興味をそそられる村を30分ほど散策するのは価値があります。
+経過時間: 90.0秒 / JSON: /content/nemotron-transcribe/transcripts/20261030T100503Z-fleurs-ja-02-layers0.json
+
+[colab] Executing cell 8/9 - nemotron-15...
+アップロードは無効です。設定セルでUSE_UPLOAD=Trueにすると選択できます。
+[colab] Executing cell 9/9 - nemotron-17...
+保存したレポート: /content/nemotron-transcribe/reports/nemotron-transcribe-20261030T100633Z.zip
+[/content/nemotron-transcribe/reports/nemotron-                                 
+transcribe-20261030T100633Z.zip](/content/nemotron-                             
+transcribe/reports/nemotron-transcribe-20261030T100633Z.zip)                    
+[colab] Saving notebook with outputs to '/mnt/c/Prj/2026-10-30-nemotron-small-gpu/public-notebook-source_output.ipynb'...

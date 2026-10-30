@@ -1,0 +1,3 @@
+[bootstrap] Collecting the current runtime facts.
+[bootstrap] Installing the pinned Transformers source and audio/data dependencies; torch is constrained to its existing version.
+[bootstrap] Bootstrap complete. Runtime report: /content/nemotron-transcribe/runtime.json

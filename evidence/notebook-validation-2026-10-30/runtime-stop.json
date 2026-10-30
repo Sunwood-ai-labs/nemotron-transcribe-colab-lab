@@ -1,0 +1,6 @@
+{
+  "task_runtime_stopped": true,
+  "endpoint_sha256": "0f9a1dd3e3aa51504b9545e41769a1974be2bdfd1db9213fefbb1ced567f86e3",
+  "verification": "The exact task endpoint was absent from the server assignment list after the scoped stop operation.",
+  "other_assignments_not_modified_by_this_task": true
+}

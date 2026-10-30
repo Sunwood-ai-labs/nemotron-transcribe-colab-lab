@@ -19,7 +19,15 @@
 
 The notebook preflight requires a T4, at least 4 GiB of free VRAM, about 50 GiB of CPU memory, at least 180 GB of free disk, `nvcc`, and `torch==2.11.0+cu130`. These checks describe the preparation environment used for this run. They are not a general minimum-hardware claim or a guarantee that Colab will assign that runtime. The first setup downloads the model weights, builds the pinned C++ runtime, and converts the weights. Allow tens of minutes. This repository does not contain model weights. The model and source terms are listed in [third-party notices](THIRD_PARTY_NOTICES.md).
 
-## Read the recorded T4 results
+## Read the executed notebook
+
+[Open the saved T4 notebook in Colab](https://colab.research.google.com/github/Sunwood-ai-labs/nemotron-transcribe-colab-lab/blob/main/notebooks/results/T4_2026-10-30.ipynb).
+
+All nine processing cells were executed with Google Colab CLI on a newly allocated T4 High RAM runtime. The notebook downloaded the checkpoint, built and converted it, transcribed both bundled clips with the CPU decoder and GPU audio encoder, and wrote the report ZIP. One transcript matched its reference; the other retained `企画後` instead of `帰国後`.
+
+The saved notebook keeps preparation logs in a collapsible block. Its processing cells are identical to the raw execution capture and the current public notebook. Only explanatory Markdown and log presentation changed after execution. [Source bytes, outputs, hashes, and verification scope](evidence/notebook-validation-2026-10-30/README.md) are preserved separately. The task T4 has been stopped. Optional upload and browser-download controls were skipped during the automated run.
+
+## Read the earlier small-GPU memory experiment
 
 The recorded run completed both Japanese FLEURS clips in each configuration. The results come from four successful Colab CLI invocations on one Tesla T4.
 
@@ -32,15 +40,15 @@ The zero-layer configuration still uses the GPU for the audio encoder. The worke
 
 One clip matched its reference exactly. The other produced `企画後` where the reference has `帰国後`. Two short recordings do not establish general transcription accuracy or meeting-audio quality.
 
-The [recorded result JSON](evidence/2026-10-30/small-gpu-results.json), [captured CLI notebook](evidence/2026-10-30/executed-history.ipynb), [transcripts and logs](evidence/2026-10-30/runs/), and [verification scope](evidence/2026-10-30/verification.json) preserve the source evidence. The captured CLI notebook is a historical record, not the user-facing notebook linked above. It does not prove a fresh end-to-end run of that repository notebook.
+The [recorded result JSON](evidence/2026-10-30/small-gpu-results.json), [captured CLI notebook](evidence/2026-10-30/executed-history.ipynb), [transcripts and logs](evidence/2026-10-30/runs/), and [verification scope](evidence/2026-10-30/verification.json) preserve the earlier experiment. The fresh public-notebook execution has its own proof record linked above.
 
 ## Review the model and source revisions
 
-The source experiment used `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` at revision `c17667641642c4265ff2b7037dd101b7d4567634` and NeMo-Speech.cpp at commit `d8a1abf2ea9d11e8f98ad0e10cc2c12ef1cb3a14`.
+Both experiments used `nvidia/NVIDIA-Nemotron-3.5-Transcribe-30B-A4B` at revision `c17667641642c4265ff2b7037dd101b7d4567634` and NeMo-Speech.cpp at commit `d8a1abf2ea9d11e8f98ad0e10cc2c12ef1cb3a14`.
 
-The experimental profile uses Q4_0 routed experts, Q8_0 dense linears, BF16 embeddings and output head, and an F16 speech encoder. It is different from the upstream IQ4_NL profile. The run also used a small patch to choose the number of language-model layers on the GPU. The code does not claim an unmodified all-GPU NeMo-Speech.cpp run.
+The experimental profile uses Q4_0 routed experts, Q8_0 dense linears, BF16 embeddings and output head, and an F16 speech encoder. It is different from the upstream IQ4_NL profile. The run also used a small patch to choose the number of language-model layers on the GPU.
 
-The source experiment did not test a physical 4 GB GPU, long recordings, speaker diarization, or translation. It used two Japanese clips and sampled memory every 0.5 seconds. The published notebook's end-to-end run status must be read from a separate fresh-run record when one is added.
+Neither experiment tested a physical 4 GB GPU, long recordings, speaker diarization, or translation. The earlier memory experiment sampled every 0.5 seconds. The fresh notebook run used normal free VRAM on the T4 and did not repeat the memory-reservation experiment.
 
 ## Check the repository
 
@@ -49,9 +57,11 @@ Run the local structural checks with Python 3.12:
 ```console
 python -m pip install nbformat
 python tools/check_repository.py
+python -m unittest discover -s tests -v
+python tools/verify_execution.py
 ```
 
-GitHub Actions runs the same checks. CI validates notebook structure, script syntax, recorded evidence, local links, and the public payload. CI does not run Colab or allocate a GPU.
+GitHub Actions runs the same checks. CI validates notebook structure, script syntax, saved execution proof, local links, and the public payload. CI does not run Colab or allocate a GPU.
 
 ## Review the licenses
 

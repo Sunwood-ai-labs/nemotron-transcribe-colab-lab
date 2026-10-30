@@ -1,3 +1,5 @@
 * text=auto eol=lf
 audio/*.wav binary
 evidence/** -text whitespace=cr-at-eol
+# Preserve terminal renderer padding in raw execution evidence.
+evidence/**/*.log -text whitespace=-blank-at-eol,-blank-at-eof,cr-at-eol
