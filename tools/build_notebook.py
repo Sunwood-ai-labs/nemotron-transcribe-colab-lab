@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 NOTEBOOK_PATH = ROOT / "notebooks" / "Nemotron_T4_Colab.ipynb"
+CODE_COMMIT = "33a38c8faaed84eb8a4c781f35327d2c21a9e2f2"
 
 CELLS = [
     (
@@ -195,7 +196,7 @@ def _cell(kind: str, source: str, index: int) -> dict[str, object]:
     return cell
 
 
-def build(code_revision: str = "main") -> Path:
+def build(code_revision: str = CODE_COMMIT) -> Path:
     if code_revision != "main" and (len(code_revision) != 40 or any(ch not in "0123456789abcdef" for ch in code_revision.lower())):
         raise ValueError("code_revision must be 'main' or a 40-character commit SHA")
     NOTEBOOK_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -229,6 +230,6 @@ def build(code_revision: str = "main") -> Path:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--code-revision", default="main", help="main or a 40-character source commit SHA")
+    parser.add_argument("--code-revision", default=CODE_COMMIT, help="main or a 40-character source commit SHA")
     arguments = parser.parse_args()
     print(build(arguments.code_revision))
