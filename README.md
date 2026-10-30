@@ -44,7 +44,7 @@ The source experiment did not test a physical 4 GB GPU, long recordings, speaker
 
 ## Check the repository
 
-Run the local structural checks with Python 3.10 or newer:
+Run the local structural checks with Python 3.12:
 
 ```console
 python -m pip install nbformat

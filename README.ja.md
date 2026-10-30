@@ -44,7 +44,7 @@
 
 ## リポジトリを検査する
 
-Python 3.10以降でローカルの構造チェックを実行します。
+Python 3.12でローカルの構造チェックを実行します。
 
 ```console
 python -m pip install nbformat
