@@ -59,7 +59,7 @@ if not re.fullmatch(r"main|[0-9a-f]{40}", CODE_REVISION):
 if REPO_ROOT.exists() and not (REPO_ROOT / ".git").exists():
     raise RuntimeError(f"保存先がGitリポジトリではありません: {REPO_ROOT}")
 if not REPO_ROOT.exists():
-    subprocess.run(["git", "clone", "--filter=blob:none", "--no-checkout", REPO_URL, str(REPO_ROOT)], check=True)
+    subprocess.run(["git", "clone", "--filter=blob:none", REPO_URL, str(REPO_ROOT)], check=True)
 remote = subprocess.check_output(["git", "-C", str(REPO_ROOT), "remote", "get-url", "origin"], text=True).strip()
 if remote.removesuffix(".git").lower() != REPO_URL.removesuffix(".git").lower():
     raise RuntimeError(f"保存先のoriginが想定と異なります: {remote}")
